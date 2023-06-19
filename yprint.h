@@ -12,6 +12,8 @@
 
 #ifndef YPRINT_H
 # define YPRINT_H
+
 // My equivalent of printf
 int				yprintf(const char *str, ...);
+
 #endif

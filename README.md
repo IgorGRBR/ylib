@@ -7,7 +7,7 @@ Libft is a library that is used in 42 School and developed by its students. ylib
 
 # Modules
 ylib is split into several modules (.h files), each one of them can be used on its own, but may depend on other modules (i.e. almost every module depends on ytypes.h). To include every module, use:
-`#import <ylib.h>`
+`#import <ylib.h>`.
 To avoid potential name clashes, it is recomended to only include ytypes.h in other header files.
 
 ## ylib.h

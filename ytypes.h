@@ -48,18 +48,13 @@ typedef struct s_string {
 	unsigned int	size;
 }	t_string;
 
-// Represents a safe result wrapper (not typesafe tho lmao)
-// typedef struct s_result {
-// 	void			*value;
-// 	t_bool			status;
-// 	t_bool			verified;
-// }	t_result;
-
+// 2D vector of integers
 typedef struct s_ivec2 {
 	int	x;
 	int	y;
 }	t_ivec2;
 
+// 2D vector of doubels
 typedef struct s_dvec2 {
 	double	x;
 	double	y;

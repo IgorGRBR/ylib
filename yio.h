@@ -53,14 +53,32 @@ t_fcnode		*_get_cache_node(t_file_cache *cache, int fd);
 // from the cache
 unsigned int	_update_cache_node(t_file_cache *cache, t_fcnode *node);
 
+// Return the next line from specified file descriptor. Returns NULL/YNULL if
+// file descriptor is exhausted
 char			*get_next_line(int fd);
 
+// Write cstring to file descriptor
 void			write_cstr_fd(int fd, const char *s);
 
+// Try to open file at path str, with specified flags. Returns TRUE upon
+// success and sets value of fd to the opened file descriptor. Otherwise
+// returns FALSE
 t_bool			try_open_file(const t_string *str, int flags, int *fd);
+
+// Same as try_open_file, except the path is specified with cstring instead
+// of string
 t_bool			try_open_file_cstr(const char *cstr, int flags, int *fd);
+
+// Read file from fd in its entirety into a list of strings. Returns
+// NULL/YNULL if file descriptor is invalid
 t_list			*read_fd_to_lines(int fd);
+
+// Read file at path str with specified flags into a list of strings.
+// Returns NULL/YNULL if file descriptor is invalid
 t_list			*read_file_to_lines(const t_string *str, int flags);
+
+// Same as read_file_to_lines, except the path is specified with cstring
+// instead of string
 t_list			*read_file_to_lines_cstr(const char *str, int flags);
 
 #endif
