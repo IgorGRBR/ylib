@@ -19,9 +19,7 @@ t_list	*list_new(void)
 	t_list	*list;
 
 	list = (t_list *)malloc(sizeof (t_list));
-	list->size = 0;
-	list->capacity = 0;
-	list->data = YNULL;
+	list_init(list);
 	return (list);
 }
 
@@ -56,8 +54,7 @@ void	_list_realloc(t_list *list, unsigned int new_size)
 
 void	list_delete(t_list *list)
 {
-	if (list->data)
-		free(list->data);
+	list_deinit(list);
 	free(list);
 }
 

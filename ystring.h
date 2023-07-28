@@ -15,20 +15,35 @@
 # include "ytypes.h"
 # include <stdarg.h>
 
-// Create a new empty string
+// Create and initialize a new empty string
 t_string	*string_new(void);
+
+// Initialize a new empty string
+t_bool		string_init(t_string *str);
 
 // Create a new string from cstring
 t_string	*string_from_cstr(const char *cstr);
 
+// Initialize a new string from cstring
+t_bool		string_init_from_cstr(t_string *str, const char *cstr);
+
 // Create a string from the list of characters
 t_string	*string_from_char_list(t_list *clist);
+
+// Initialize a new string from the list of characters
+t_bool		string_init_from_char_list(t_string *str, t_list *clist);
 
 // Copy a string
 t_string	*string_copy(t_string *str);
 
-// Delete a string
+// Initialize a new string as a copy of other string
+t_bool		string_copy_from_string(t_string *str, t_string *str2);
+
+// Deinitialize and delete a string
 void		string_delete(t_string *str);
+
+// Deinitialize a string
+void		string_deinit(t_string *str);
 
 // Return character of string str at i. Returns '\0' if i is out of bounds
 char		string_get(t_string *str, unsigned int i);

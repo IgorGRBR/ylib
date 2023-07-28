@@ -17,14 +17,20 @@
 #  define LIST_C_STEP 20
 # endif
 
-// Allocates the list
+// Allocates and initializes an empty list
 t_list		*list_new(void);
+
+// Initializes an empty list
+t_bool		list_init(t_list *list);
 
 // Private function! Reallocates the list to the new capacity
 void		_list_realloc(t_list *list, unsigned int new_size);
 
-// Deallocates the list itself (but not the elements)
+// Deinitializes and deallocates the list itself (but not the elements)
 void		list_delete(t_list *list);
+
+// Deinitializes the list itself (but not the elements)
+void		list_deinit(t_list *list);
 
 // Insert the element to the back of the list
 void		list_insert(t_list *list, void *e);
