@@ -47,7 +47,10 @@ typedef struct s_pconvdata {
 t_pconvdata	make_convdata(void);
 const char	*configure_convdata(t_pconvdata *data, const char *str);
 t_pconvtype	get_convtype(const char c);
+t_pconvdata	parse_format_conversion(const char **str);
+t_pconvdata	parse_iformat_conversion(const char *str, t_uint *i);
 
+char		*format_none(va_list *args, t_pconvdata cdata);
 char		*format_unknown(va_list *args, t_pconvdata cdata);
 char		*format_char(va_list *args, t_pconvdata cdata);
 char		*format_string(va_list *args, t_pconvdata cdata);

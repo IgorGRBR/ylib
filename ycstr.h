@@ -14,6 +14,7 @@
 # define YCSTR_H
 
 // Return the length of cstring
+#include <stdarg.h>
 unsigned int	cstr_len(const char *s);
 
 // Concatenate string src into dst buffer withy the size of dsize (equivalent
@@ -32,6 +33,9 @@ char			*cstr_itoa(int n);
 // Convert cstring into a integer
 int				cstr_atoi(const char *str);
 
+// Compare 2 strings
+int				cstr_cmp(const char *s1, const char *s2);
+
 // Compare up to n characters between 2 strings (equivalent of strncmp)
 int				cstr_ncmp(const char *s1, const char *s2, unsigned int n);
 
@@ -42,5 +46,12 @@ char			*cstr_trim(char const *s1, char const *set);
 // Create a new cstring that is a substring of cstring s, starting at st and
 // being len characters long
 char			*cstr_sub(char const *s, unsigned int st, unsigned int len);
+
+// Interpolate provided parameters into a template cstring
+char			*cstr_format(const char *fmt_cstr, ...);
+
+// Interpolate provided parameter list into a template cstring
+char			*cstr_vformat(const char *fmt_cstr, va_list *args);
+
 
 #endif

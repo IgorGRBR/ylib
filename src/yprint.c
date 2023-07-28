@@ -32,7 +32,7 @@ static char	*(*g_dispatch_table[FORMAT_TYPE_COUNT])(va_list *, t_pconvdata) = {
 	format_percent,
 };
 
-static t_pconvdata	parse_conversion(const char **str)
+t_pconvdata	parse_format_conversion(const char **str)
 {
 	t_pconvdata	cdata;
 
@@ -49,6 +49,28 @@ static t_pconvdata	parse_conversion(const char **str)
 			++(*str);
 	}
 	cdata.type = get_convtype(**str);
+	return (cdata);
+}
+
+t_pconvdata	parse_iformat_conversion(const char *str, t_uint *i)
+{
+	t_pconvdata	cdata;
+	const char *cstrc;
+
+	cdata = make_convdata();
+	cstrc = configure_convdata(&cdata, str + *i);
+	cdata.field_width = cstr_atoi(cstrc);
+	while (*cstrc >= '0' && *cstrc <= '9')
+		++cstrc;
+	if (*cstrc == '.')
+	{
+		cdata.precision_flag = TRUE;
+		cdata.precision = cstr_atoi(++cstrc);
+		while (*cstrc >= '0' && *cstrc <= '9')
+			++(cstrc);
+	}
+	cdata.type = get_convtype(*cstrc);
+	*i = cstrc - str;
 	return (cdata);
 }
 
@@ -103,7 +125,7 @@ int	yprintf(const char *str, ...)
 		if (*str == '%')
 		{
 			++str;
-			cdata = parse_conversion(&str);
+			cdata = parse_format_conversion(&str);
 			print_num += print_argument(&argp, cdata);
 		}
 		else

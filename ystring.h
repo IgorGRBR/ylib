@@ -13,6 +13,7 @@
 #ifndef YSTRING_H
 # define YSTRING_H
 # include "ytypes.h"
+# include <stdarg.h>
 
 // Create a new empty string
 t_string	*string_new(void);
@@ -105,11 +106,17 @@ t_string	*string_reverse(t_string *str);
 // Create a substring from a string, starting at s and ending at e
 t_string	*string_substring(t_string *str, unsigned int s, unsigned int e);
 
-// Helper function to deleate a string from within list_iapply (Deprecated)
+// Helper function to delete a string from within list_iapply (Deprecated)
 void		string_delete_as_element(void *str, t_uint i);
 
 // Same as string_append, except the string in the first argument gets appended
 // to the one in the second argument
 void		string_append2(t_string *str2, t_string *str);
+
+// Interpolate provided parameters into a template string
+t_string	*string_format(t_string *fmt_str, ...);
+
+// Interpolate provided parameter list into a template string
+t_string	*string_vformat(t_string *fmt_str, va_list *args);
 
 #endif
