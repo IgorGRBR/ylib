@@ -128,6 +128,12 @@ void		string_delete_as_element(void *str, t_uint i);
 // to the one in the second argument
 void		string_append2(t_string *str2, t_string *str);
 
+// String equality check
+t_bool		string_equal(t_string *str, t_string *str2);
+
+// String hashing using mewmew hash
+t_uint		string_hash(t_string *str);
+
 // Interpolate provided parameters into a template string
 t_string	*string_format(t_string *fmt_str, ...);
 

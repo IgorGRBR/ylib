@@ -60,4 +60,17 @@ typedef struct s_dvec2 {
 	double	y;
 }	t_dvec2;
 
+// Hash function for hash maps and sets
+typedef t_uint	(*t_hash_func)(void *);
+
+// Equals function for hash maps and sets
+typedef	t_bool	(*t_equals_func)(void *, void *);
+
+// Hash Map container
+typedef struct s_map {
+	t_hash_func		hash_func;
+	t_equals_func	equals_func;
+	
+}	t_map;
+
 #endif
