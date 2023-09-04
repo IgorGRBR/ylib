@@ -37,25 +37,29 @@ typedef struct s_list_iter
 }	t_list_iter;
 
 // Represents a boolean value
-typedef enum e_bool {
+typedef enum e_bool
+{
 	FALSE,
 	TRUE
 }	t_bool;
 
 // Represents a mutable, null-termintated string
-typedef struct s_string {
+typedef struct s_string
+{
 	char			*cstr;
 	unsigned int	size;
 }	t_string;
 
 // 2D vector of integers
-typedef struct s_ivec2 {
+typedef struct s_ivec2
+{
 	int	x;
 	int	y;
 }	t_ivec2;
 
 // 2D vector of doubels
-typedef struct s_dvec2 {
+typedef struct s_dvec2
+{
 	double	x;
 	double	y;
 }	t_dvec2;
@@ -66,11 +70,19 @@ typedef t_uint	(*t_hash_func)(void *);
 // Equals function for hash maps and sets
 typedef	t_bool	(*t_equals_func)(void *, void *);
 
+// Hash Map bucket container (is private/not meant to be used outside of yLib)
+struct	s_map_bucket
+{
+	t_bool	is_list;
+	t_list	*items;
+	void	*item;
+};
+
 // Hash Map container
-typedef struct s_map {
+typedef struct s_map
+{
 	t_hash_func		hash_func;
 	t_equals_func	equals_func;
-	
 }	t_map;
 
 #endif
