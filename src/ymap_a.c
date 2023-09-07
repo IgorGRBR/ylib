@@ -1,5 +1,6 @@
 // TODO: Add 42 School header here
 
+#include "ylist.h"
 #include "ytypes.h"
 #include "ymap.h"
 #include "ydefines.h"
@@ -29,6 +30,12 @@ t_bool	map_init(t_map *map, t_hash_func hfunc, t_equals_func efunc)
 	map->equals_func = efunc;
 	if (!efunc)
 		map->equals_func = ptr_equal;
+	map->realloc_ratio = MAP_REALLOC_RATIO;
+	map->realloc_value = MAP_INITIAL_SIZE * MAP_REALLOC_RATIO;
+	map->size = 0;
+	map->bucket_array_size = 0;
+	map->bucket_array = YNULL;
+	_map_realloc(map, MAP_INITIAL_SIZE);
 	return (TRUE);
 }
 
@@ -38,8 +45,22 @@ void	map_delete(t_map *map)
 	free(map);
 }
 
-//TODO
 void	map_deinit(t_map *map)
 {
-	(void)map;
+	t_uint	i;
+
+	i = 0;
+	while (i < map->bucket_array_size)
+	{
+		if (map->bucket_array[i].is_list)
+		{
+			list_apply(&map->bucket_array[i].items, 
+				(t_apply_func)_map_item_container_delete);
+			list_deinit(&map->bucket_array[i].items);
+		}
+		i++;
+	}
+	free(map->bucket_array);
+	map->bucket_array_size = 0;
+	map->size = 0;
 }

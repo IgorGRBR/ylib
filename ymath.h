@@ -12,6 +12,10 @@
 
 #ifndef YMATH_H
 # define YMATH_H
+# ifndef PRIME_SEARCH_THRESHOLD
+#  define PRIME_SEARCH_THRESHOLD 2000
+# endif
+#include "ytypes.h"
 
 // Return the larger int value between a and b
 int				int_max(int a, int b);
@@ -52,5 +56,8 @@ unsigned int	uint_clamp(int v, int min, int max);
 // Clamp a double v between min and max
 double			double_clamp(double v, double min, double max);
 // const double	g_epsilon = 2 ^ -52;
+
+// Returns the next prime number after num
+t_uint			get_next_prime(t_uint num);
 
 #endif
