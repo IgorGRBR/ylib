@@ -1,4 +1,14 @@
-// TODO: Add 42 School header here
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ymap_a.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihhrabar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/07 13:40:52 by ihhrabar          #+#    #+#             */
+/*   Updated: 2023/09/07 13:40:56 by ihhrabar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ylist.h"
 #include "ytypes.h"
@@ -54,7 +64,7 @@ void	map_deinit(t_map *map)
 	{
 		if (map->bucket_array[i].is_list)
 		{
-			list_apply(&map->bucket_array[i].items, 
+			list_apply(&map->bucket_array[i].items,
 				(t_apply_func)_map_item_container_delete);
 			list_deinit(&map->bucket_array[i].items);
 		}

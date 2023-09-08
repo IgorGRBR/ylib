@@ -20,6 +20,7 @@
 # include "ycstr.h"
 # include "ycmem.h"
 # include "ylist.h"
+# include "ymap.h"
 # include "ystring.h"
 # include "yprint.h"
 # include "yio.h"

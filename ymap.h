@@ -1,6 +1,18 @@
-// TODO: Add 42 School header here
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ymap.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihhrabar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/07 13:43:14 by ihhrabar          #+#    #+#             */
+/*   Updated: 2023/09/07 13:43:15 by ihhrabar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "ytypes.h"
+#ifndef YMAP_H
+# define YMAP_H
+# include "ytypes.h"
 # ifndef MAP_INITIAL_SIZE
 #  define MAP_INITIAL_SIZE 17
 # endif
@@ -10,6 +22,9 @@
 # ifndef MAP_SCALING_RATIO
 #  define MAP_SCALING_RATIO 1.5
 # endif
+
+typedef struct s_map_item_container	t_mic;
+typedef struct s_map_bucket			t_mbk;
 
 // Create and initialize a new empty map with specified equals and hashing
 // functions. If efunc is NULL, then equality will be checked by comparing
@@ -49,7 +64,7 @@ void	map_set(t_map *map, void *key, void *item);
 
 // Removes item with specified key from the map if it exist. Returns TRUE
 // if item exists, otherwise returns FALSE
-void	map_remove(t_map *map, void *key);
+t_bool	map_remove(t_map *map, void *key);
 
 // Unsets the value of map at specified key to NULL
 void	map_unset(t_map *map, void *key);
@@ -57,23 +72,26 @@ void	map_unset(t_map *map, void *key);
 // Retrieves item from the map by the specified key
 void	*map_get(t_map *map, void *key);
 
+// Checks if map has the value mapped to the specified key
+t_bool	map_has(t_map *map, void *key);
+
 // Utility function to set the required ratio of bucket items/bucket count to
 // invoke the reallocation and scaling percentage of the resulting bucket 
 // array. Default value for bucket items/bucket count ratio is 0.7 and can be
 // changed with MAP_REALLOC_RATIO define/macro. The default value for scaling
 // percentage is 1.5, and can be changed with MAP_SCALING_RATIO.
-void	map_set_realloc_threshold(t_map *map, 
+void	map_set_realloc_threshold(t_map *map,
 			double threshold_percent,
 			double scaling_percent);
 
 // Private function! Allocates and initializes map item container
-struct s_map_item_container	
-		*_map_item_container_new(t_uint hash, void *key, void *item);
+t_mic	*_map_item_container_new(t_uint hash, void *key, void *item);
 
 // Private function! Deinitializes and deallocates map item container
-void	_map_item_container_delete(struct s_map_item_container *container);
+void	_map_item_container_delete(t_mic *container);
 
 // Private function! Returns a pointer to the item container
-struct s_map_item_container
-		*_map_item_container_find_item_by_hash(struct s_map_bucket *bucket,
+t_mic	*_map_item_container_find_item_by_hash(t_mbk *bucket,
 			t_uint hash, void *key, t_equals_func efunc);
+
+#endif

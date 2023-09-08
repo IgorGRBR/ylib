@@ -15,7 +15,7 @@
 # ifndef PRIME_SEARCH_THRESHOLD
 #  define PRIME_SEARCH_THRESHOLD 2000
 # endif
-#include "ytypes.h"
+# include "ytypes.h"
 
 // Return the larger int value between a and b
 int				int_max(int a, int b);

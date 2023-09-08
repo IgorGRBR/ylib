@@ -14,7 +14,8 @@
 # define YCSTR_H
 
 // Return the length of cstring
-#include <stdarg.h>
+# include <stdarg.h>
+
 unsigned int	cstr_len(const char *s);
 
 // Concatenate string src into dst buffer withy the size of dsize (equivalent
@@ -52,6 +53,5 @@ char			*cstr_format(const char *fmt_cstr, ...);
 
 // Interpolate provided parameter list into a template cstring
 char			*cstr_vformat(const char *fmt_cstr, va_list *args);
-
 
 #endif

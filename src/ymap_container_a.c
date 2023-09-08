@@ -1,4 +1,14 @@
-// TODO: Insert 42 header here
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ymap_container_a.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihhrabar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/07 13:41:11 by ihhrabar          #+#    #+#             */
+/*   Updated: 2023/09/07 13:41:12 by ihhrabar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ylist.h"
 #include "ytypes.h"
@@ -7,7 +17,7 @@
 #include <stdlib.h>
 
 struct s_map_item_container	*
-		_map_item_container_new(t_uint hash, void *key, void *item)
+	_map_item_container_new(t_uint hash, void *key, void *item)
 {
 	struct s_map_item_container	*container;
 
@@ -29,6 +39,7 @@ struct s_map_item_container
 {
 	t_list_iter					it;
 	struct s_map_item_container	*container;
+
 	if (!bucket)
 		return (YNULL);
 	else if (!bucket->is_list

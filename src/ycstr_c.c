@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ycstr_c.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihhrabar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/07 13:41:38 by ihhrabar          #+#    #+#             */
+/*   Updated: 2023/09/07 13:41:39 by ihhrabar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ycstr.h"
 #include "ydefines.h"
 #include <stdlib.h>
@@ -28,7 +40,7 @@ int	cstr_cmp(const char *s1, const char *s2)
 	return ((int)(*s1 - *s2));
 }
 
-static char *join_cstrs(char *cstr1, char *cstr2)
+static char	*join_cstrs(char *cstr1, char *cstr2)
 {
 	char	*result;
 
@@ -52,9 +64,9 @@ char	*cstr_format(const char *fmt_cstr, ...)
 char	*cstr_vformat(const char *fmt_cstr, va_list *args)
 {
 	t_pconvdata	cdata;
-	char	*cstr;
-	t_uint	i[2];
-	char	*sub_cstr;
+	char		*cstr;
+	t_uint		i[2];
+	char		*sub_cstr;
 
 	cstr = cstr_dup("");
 	i[0] = 0;

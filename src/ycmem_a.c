@@ -48,3 +48,8 @@ void	*ymem_copy(void *dst, const void *src, unsigned int n)
 	}
 	return (dst);
 }
+
+void	*ynull(void)
+{
+	return (0);
+}

@@ -55,7 +55,7 @@ t_pconvdata	parse_format_conversion(const char **str)
 t_pconvdata	parse_iformat_conversion(const char *str, t_uint *i)
 {
 	t_pconvdata	cdata;
-	const char *cstrc;
+	const char	*cstrc;
 
 	cdata = make_convdata();
 	cstrc = configure_convdata(&cdata, str + *i);

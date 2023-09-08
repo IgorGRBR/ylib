@@ -13,6 +13,14 @@
 #ifndef YDEFINES_H
 # define YDEFINES_H
 # ifndef YNULL
-#  define YNULL (void *)0
+#  define YNULL 0
+// #  define YNULL (void *)0
+// You might be asking why I commented out a perfectly fine line, and instead
+// replaced it with something arguably worse. Its norminette. Its because
+// norm doesn't allow non-constant expressions/statements in preprocessor, and
+// according to norminette, "(void *)0" is not a constant. Fuck norminette.
+
+// A function call replacement for a proper YNULL macro
+void	*ynull(void);
 # endif
 #endif

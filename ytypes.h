@@ -65,10 +65,10 @@ typedef struct s_dvec2
 }	t_dvec2;
 
 // Hash function for hash maps and sets
-typedef t_uint	(*t_hash_func)(void *);
+typedef t_uint			(*t_hash_func)(void *);
 
 // Equals function for hash maps and sets
-typedef	t_bool	(*t_equals_func)(void *, void *);
+typedef t_bool			(*t_equals_func)(void *, void *);
 
 // Hash Map item container (is private/not meant to be used outside of yLib)
 struct s_map_item_container
@@ -98,6 +98,7 @@ typedef struct s_map
 	t_uint				size;
 }	t_map;
 
+// TODO: Map key-value pair iterator
 typedef struct s_map_iter
 {
 	void	*value;
