@@ -49,7 +49,7 @@ void	*ymem_copy(void *dst, const void *src, unsigned int n)
 	return (dst);
 }
 
-void	*ynull(void)
+void	*nil(void)
 {
 	return (0);
 }

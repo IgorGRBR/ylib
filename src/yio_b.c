@@ -114,7 +114,7 @@ char	*get_next_line(int fd)
 	static t_file_cache	cache = (t_file_cache){
 		.capacity = 0,
 		.size = 0,
-		.node_array = YNULL
+		.node_array = (void *)0,
 	};
 
 	result = (char *)malloc(sizeof (char));

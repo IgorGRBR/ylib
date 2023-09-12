@@ -47,7 +47,8 @@ static void	redistribute_items(t_map *map,
 	while (i < old_size)
 	{
 		if (old_array[i].is_list)
-			list_apply(&old_array[i].items, (t_apply_func) set_item);
+			list_capply(&old_array[i].items, (t_capply_func) set_item,
+				map);
 		else if (old_array[i].container.key && old_array[i].container.item)
 		{
 			_map_set_by_hash(map,

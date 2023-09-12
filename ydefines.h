@@ -14,13 +14,10 @@
 # define YDEFINES_H
 # ifndef YNULL
 #  define YNULL 0
-// #  define YNULL (void *)0
-// You might be asking why I commented out a perfectly fine line, and instead
-// replaced it with something arguably worse. Its norminette. Its because
-// norm doesn't allow non-constant expressions/statements in preprocessor, and
-// according to norminette, "(void *)0" is not a constant. Fuck norminette.
+// #  define YNULL (void *)0 //No longer works, even though its a constant,
+// thanks norm :)
 
 // A function call replacement for a proper YNULL macro
-void	*ynull(void);
+void	*nil(void);
 # endif
 #endif
