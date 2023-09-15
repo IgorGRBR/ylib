@@ -81,4 +81,6 @@ void	_map_realloc(t_map *map, t_uint new_size)
 		free(old_array);
 	}
 	map->bucket_array_size = new_size;
+	map->upper_realloc_value = map->upper_realloc_ratio * new_size;
+	map->lower_realloc_value = map->lower_realloc_ratio * new_size;
 }

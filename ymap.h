@@ -16,15 +16,18 @@
 # ifndef MAP_INITIAL_SIZE
 #  define MAP_INITIAL_SIZE 17
 # endif
-# ifndef MAP_REALLOC_RATIO
-#  define MAP_REALLOC_RATIO 0.7
+# ifndef MAP_UPPER_REALLOC_RATIO
+#  define MAP_UPPER_REALLOC_RATIO 0.8
+# endif
+# ifndef MAP_LOWER_REALLOC_RATIO
+#  define MAP_LOWER_REALLOC_RATIO 0.3
 # endif
 # ifndef MAP_SCALING_RATIO
 #  define MAP_SCALING_RATIO 1.5
 # endif
 
-typedef struct s_map_item_container	t_mic;
-typedef struct s_map_bucket			t_mbk;
+typedef struct s_map_item_container	t__mic;
+typedef struct s_map_bucket			t__mbk;
 
 // Create and initialize a new empty map with specified equals and hashing
 // functions. If efunc is NULL, then equality will be checked by comparing
@@ -81,17 +84,23 @@ t_bool	map_has(t_map *map, void *key);
 // changed with MAP_REALLOC_RATIO define/macro. The default value for scaling
 // percentage is 1.5, and can be changed with MAP_SCALING_RATIO.
 void	map_set_realloc_threshold(t_map *map,
-			double threshold_percent,
+			double upper_realloc_ratio,
+			double lower_realloc_ratio,
 			double scaling_percent);
 
 // Private function! Allocates and initializes map item container
-t_mic	*_map_item_container_new(t_uint hash, void *key, void *item);
+t__mic	*_map_item_container_new(t_uint hash, void *key, void *item);
 
 // Private function! Deinitializes and deallocates map item container
-void	_map_item_container_delete(t_mic *container);
+void	_map_item_container_delete(t__mic *container);
 
 // Private function! Returns a pointer to the item container
-t_mic	*_map_item_container_find_item_by_hash(t_mbk *bucket,
+t__mic	*_map_item_container_find_item_by_hash(t__mbk *bucket,
 			t_uint hash, void *key, t_equals_func efunc);
+
+// Private functions! These functions resize map's bucket container size if it
+// meets reallocation criteria.
+void	_map_try_grow(t_map *map);
+void	_map_try_shrink(t_map *map);
 
 #endif

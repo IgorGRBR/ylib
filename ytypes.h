@@ -93,8 +93,11 @@ typedef struct s_map
 	t_equals_func		equals_func;
 	struct s_map_bucket	*bucket_array;
 	t_uint				bucket_array_size;
-	double				realloc_ratio;
-	t_uint				realloc_value;
+	double				upper_realloc_ratio;
+	double				lower_realloc_ratio;
+	t_uint				upper_realloc_value;
+	t_uint				lower_realloc_value;
+	double				scaling_ratio;
 	t_uint				size;
 }	t_map;
 

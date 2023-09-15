@@ -14,8 +14,8 @@
 # define YDEFINES_H
 # ifndef YNULL
 #  define YNULL 0
-// #  define YNULL (void *)0 //No longer works, even though its a constant,
-// thanks norm :)
+// #  define YNULL (void *)0
+// #  define YNULL (0)
 
 // A function call replacement for a proper YNULL macro
 void	*nil(void);

@@ -40,9 +40,12 @@ t_bool	map_init(t_map *map, t_hash_func hfunc, t_equals_func efunc)
 	map->equals_func = efunc;
 	if (!efunc)
 		map->equals_func = ptr_equal;
-	map->realloc_ratio = MAP_REALLOC_RATIO;
-	map->realloc_value = MAP_INITIAL_SIZE * MAP_REALLOC_RATIO;
+	map->upper_realloc_ratio = MAP_UPPER_REALLOC_RATIO;
+	map->upper_realloc_value = MAP_INITIAL_SIZE * MAP_UPPER_REALLOC_RATIO;
+	map->lower_realloc_ratio = MAP_LOWER_REALLOC_RATIO;
+	map->lower_realloc_value = MAP_INITIAL_SIZE * MAP_LOWER_REALLOC_RATIO;
 	map->size = 0;
+	map->scaling_ratio = MAP_SCALING_RATIO;
 	map->bucket_array_size = 0;
 	map->bucket_array = YNULL;
 	_map_realloc(map, MAP_INITIAL_SIZE);
