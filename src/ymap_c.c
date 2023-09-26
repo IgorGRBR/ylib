@@ -52,8 +52,7 @@ void	_map_set_by_hash(t_map *map, t_uint hash, void *key, void *item)
 	}
 	else
 	{
-		container = _map_item_container_new(bucket->container.hash,
-			bucket->container.key, bucket->container.item);
+		container = _map_item_container_new(hash, key, item);
 		insert_container(map, bucket, container);
 	}
 }

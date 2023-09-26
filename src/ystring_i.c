@@ -13,10 +13,16 @@
 #include "ytypes.h"
 #include "ystring.h"
 #include "ycmem.h"
+#include "ycstr.h"
 
 t_bool	string_equal(t_string *str, t_string *str2)
 {
 	return (string_compare(str, str2) == 0);
+}
+
+t_bool	string_equal_cstr(t_string *str, char *cstr)
+{
+	return (cstr_ncmp(str->cstr, cstr, str->size) == 0);
 }
 
 static t_uint	murmur_32_scramble(t_uint k)

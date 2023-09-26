@@ -6,7 +6,7 @@ CFLAGS_DEBUG = $(CFLAGS) -fsanitize=address -fsanitize=undefined
 SRC_DIR = src
 OBJ_DIR = obj
 DBG_OBJ_DIR = dobj
-SRC = $(wildcard $(addsuffix *.c,src/y))
+SRC = $(wildcard $(addsuffix *.c,src/))
 OBJ = $(patsubst src/%.c,obj/%.o,$(SRC))
 DBG_OBJ = $(patsubst src/%.c,dobj/%.o,$(SRC))
 DEFINES = -D GNL_BSIZE=24 LIST_C_STEP=20

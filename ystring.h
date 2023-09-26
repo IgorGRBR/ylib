@@ -131,6 +131,9 @@ void		string_append2(t_string *str2, t_string *str);
 // String equality check
 t_bool		string_equal(t_string *str, t_string *str2);
 
+// String equality check
+t_bool		string_equal_cstr(t_string *str, char *cstr);
+
 // String hashing using mewmew hash
 t_uint		string_hash(t_string *str);
 
