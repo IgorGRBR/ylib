@@ -22,7 +22,7 @@ t_bool	string_equal(t_string *str, t_string *str2)
 
 t_bool	string_equal_cstr(t_string *str, char *cstr)
 {
-	return (cstr_ncmp(str->cstr, cstr, str->size) == 0);
+	return (cstr_cmp(str->cstr, cstr) == 0);
 }
 
 static t_uint	murmur_32_scramble(t_uint k)

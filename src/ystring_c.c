@@ -62,16 +62,14 @@ char	*string_find_cstr(t_string *str, const char *cstr)
 	if (clen > str->size || clen == 0)
 		return (YNULL);
 	s = 0;
-	while (i <= str->size - clen)
+	while (i - s <= str->size - clen)
 	{
-		if (str->cstr[i] == cstr[s])
-		{
-			s++;
-			if (s == clen)
-				return (str->cstr + (i - s + 1));
-		}
-		else
+		if (str->cstr[i] != cstr[s])
 			s = 0;
+		else
+			s++;
+		if (s == clen)
+			return (str->cstr + (i - s + 1));
 		i++;
 	}
 	return (YNULL);
