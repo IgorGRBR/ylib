@@ -60,8 +60,8 @@ t_list		*string_to_char_list(t_string *str);
 // string size
 void		string_resize(t_string *str, unsigned int new_size);
 
-// Finds the address of first occurence of character c in string str. Returns
-// NULL/YNULL if c wasn't found
+// Finds the index of first occurence of character c in string str. Returns
+// -1 if c wasn't found
 int		    string_find_char(t_string *str, char c);
 
 // Same as string_find_char, except this function finds the last occurence of
@@ -72,7 +72,7 @@ int		    string_find_last_char(t_string *str, char c);
 // or 0 if all characters are match
 int			string_compare(t_string *str1, t_string *str2);
 
-// Returns the address of the substring within a string, or NULL/YNULL if
+// Returns the index of the beginning of a substring within a string, or -1 if
 // string does not contain the substring
 int		    string_find(t_string *str, t_string *sub);
 
