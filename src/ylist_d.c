@@ -26,7 +26,7 @@ void	*list_pop(t_list *list)
 	return (YNULL);
 }
 
-void	list_apply(t_list *list, t_apply_func f)
+void	list_apply(t_list *list, t_apply_lfn f)
 {
 	unsigned int	i;
 
@@ -38,7 +38,7 @@ void	list_apply(t_list *list, t_apply_func f)
 	}
 }
 
-t_list	*list_map(t_list *list, t_map_func f)
+t_list	*list_map(t_list *list, t_map_lfn f)
 {
 	t_list			*result;
 	unsigned int	i;
@@ -63,7 +63,7 @@ t_list	*list_map(t_list *list, t_map_func f)
 	return (result);
 }
 
-void	list_filter(t_list *list, t_filter_func f)
+void	list_filter(t_list *list, t_filter_lfn f)
 {
 	unsigned int	read_i;
 	unsigned int	write_i;
@@ -89,7 +89,7 @@ void	list_filter(t_list *list, t_filter_func f)
 	_list_realloc(list, (1 + list->size / LIST_C_STEP) * LIST_C_STEP);
 }
 
-t_list	*list_filter_new(t_list *list, t_filter_func f)
+t_list	*list_filter_new(t_list *list, t_filter_lfn f)
 {
 	unsigned int	i;
 	t_list			*result;

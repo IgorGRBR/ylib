@@ -70,12 +70,17 @@ typedef t_uint			(*t_hash_func)(void *);
 // Equals function for hash maps and sets
 typedef t_bool			(*t_equals_func)(void *, void *);
 
+typedef struct s_kv_pair
+{
+	void	*key;
+	void	*value;
+}	t_kv_pair;
+
 // Hash Map item container (is private/not meant to be used outside of yLib)
 struct s_map_item_container
 {
-	t_uint	hash;
-	void	*key;
-	void	*item;
+	t_uint		hash;
+	t_kv_pair	item;
 };
 
 // Hash Map bucket container (is private/not meant to be used outside of yLib)
@@ -104,10 +109,11 @@ typedef struct s_map
 // TODO: Map key-value pair iterator
 typedef struct s_map_iter
 {
-	void	*value;
-	void	*key;
-	t_uint	i;
-	t_map	*map;
+	void		*value;
+	void		*key;
+	t_uint		bucket;
+	t_list_iter	bucket_iter;
+	t_map		*map;
 }	t_map_iter;
 
 #endif

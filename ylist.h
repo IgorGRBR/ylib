@@ -23,6 +23,9 @@ t_list		*list_new(void);
 // Initializes an empty list
 t_bool		list_init(t_list *list);
 
+// Initializes a list as a copy of other list
+t_bool		list_init_from_list(t_list *list, t_list *other);
+
 // Private function! Reallocates the list to the new capacity
 void		_list_realloc(t_list *list, unsigned int new_size);
 
@@ -56,81 +59,81 @@ t_list		*list_copy(t_list *list);
 // Removes and returns the last element from the list 
 void		*list_pop(t_list *list);
 
-typedef void	(*t_apply_func)(void *);
+typedef void	(*t_apply_lfn)(void *);
 
 // Apply a function to each list element
-void		list_apply(t_list *list, t_apply_func f);
+void		list_apply(t_list *list, t_apply_lfn f);
 
-typedef void	*(*t_map_func)(void *);
+typedef void	*(*t_map_lfn)(void *);
 
 // Build a new list by applying mapping function to a given list
-t_list		*list_map(t_list *list, t_map_func f);
+t_list		*list_map(t_list *list, t_map_lfn f);
 
-typedef t_bool	(*t_filter_func)(void *);
+typedef t_bool	(*t_filter_lfn)(void *);
 
 // Retaining-based filter
-void		list_filter(t_list *list, t_filter_func f);
+void		list_filter(t_list *list, t_filter_lfn f);
 
 // Build a new, filtered list
-t_list		*list_filter_new(t_list *list, t_filter_func f);
+t_list		*list_filter_new(t_list *list, t_filter_lfn f);
 
-typedef void	(*t_iapply_func)(void *, unsigned int);
+typedef void	(*t_iapply_lfn)(void *, unsigned int);
 
 // Apply a function to each list element with indexes
-void		list_iapply(t_list *list, t_iapply_func f);
+void		list_iapply(t_list *list, t_iapply_lfn f);
 
-typedef void	*(*t_imap_func)(void *, unsigned int);
+typedef void	*(*t_imap_lfn)(void *, unsigned int);
 
 // Build a new list by applying mapping function with index to a given list
-t_list		*list_imap(t_list *list, t_imap_func f);
+t_list		*list_imap(t_list *list, t_imap_lfn f);
 
 // A helper function to quickly free a single element using free from stdlib
 // with index
 void		free_list_element_i(void *e, unsigned int i);
 
-typedef t_bool	(*t_ifilter_func)(void *, unsigned int);
+typedef t_bool	(*t_ifilter_lfn)(void *, unsigned int);
 
 // Retaining-based filter
-void		list_ifilter(t_list *list, t_ifilter_func f);
+void		list_ifilter(t_list *list, t_ifilter_lfn f);
 
 // Build a new, filtered list
-t_list		*list_ifilter_new(t_list *list, t_ifilter_func f);
+t_list		*list_ifilter_new(t_list *list, t_ifilter_lfn f);
 
-typedef void	(*t_capply_func)(void *, void *);
+typedef void	(*t_capply_lfn)(void *, void *);
 
 // Apply a function to each list element
-void		list_capply(t_list *list, t_capply_func f, void *context);
+void		list_capply(t_list *list, t_capply_lfn f, void *context);
 
-typedef void	*(*t_cmap_func)(void *, void *);
+typedef void	*(*t_cmap_lfn)(void *, void *);
 
 // Build a new list by applying mapping function to a given list
-t_list		*list_cmap(t_list *list, t_cmap_func f, void *context);
+t_list		*list_cmap(t_list *list, t_cmap_lfn f, void *context);
 
-typedef t_bool	(*t_cfilter_func)(void *, void *);
+typedef t_bool	(*t_cfilter_lfn)(void *, void *);
 
 // Retaining-based filter
-void		list_cfilter(t_list *list, t_cfilter_func f, void *context);
+void		list_cfilter(t_list *list, t_cfilter_lfn f, void *context);
 
 // Build a new, filtered list
-t_list		*list_cfilter_new(t_list *list, t_cfilter_func f, void *context);
+t_list		*list_cfilter_new(t_list *list, t_cfilter_lfn f, void *context);
 
-typedef void	(*t_icapply_func)(void *, unsigned int, void *);
+typedef void	(*t_icapply_lfn)(void *, unsigned int, void *);
 
 // Apply a function to each list element with context
-void		list_icapply(t_list *list, t_icapply_func f, void *context);
+void		list_icapply(t_list *list, t_icapply_lfn f, void *context);
 
-typedef void	*(*t_icmap_func)(void *, unsigned int, void *);
+typedef void	*(*t_icmap_lfn)(void *, unsigned int, void *);
 
 // Build a new list by applying mapping function to a given list with context
-t_list		*list_icmap(t_list *list, t_icmap_func f, void *context);
+t_list		*list_icmap(t_list *list, t_icmap_lfn f, void *context);
 
-typedef t_bool	(*t_icfilter_func)(void *, unsigned int, void *);
+typedef t_bool	(*t_icfilter_lfn)(void *, unsigned int, void *);
 
 // Retaining-based filter with context
-void		list_icfilter(t_list *list, t_icfilter_func f, void *context);
+void		list_icfilter(t_list *list, t_icfilter_lfn f, void *context);
 
 // Build a new, filtered list with context
-t_list		*list_icfilter_new(t_list *list, t_icfilter_func f, void *context);
+t_list		*list_icfilter_new(t_list *list, t_icfilter_lfn f, void *context);
 
 // Creates a list iterator for the list
 t_list_iter	list_iter(t_list *list);

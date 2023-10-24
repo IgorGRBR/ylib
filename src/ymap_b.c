@@ -25,7 +25,8 @@ static void	init_bucket_array(struct s_map_bucket *array, t_uint size)
 	{
 		array[i] = (struct s_map_bucket){
 			.is_list = FALSE,
-			.container = (struct s_map_item_container){0, YNULL, YNULL,},
+			.container = (struct s_map_item_container){0,
+				(t_kv_pair){YNULL, YNULL}},
 		};
 		list_init(&array[i].items);
 		i++;
@@ -34,8 +35,7 @@ static void	init_bucket_array(struct s_map_bucket *array, t_uint size)
 
 static void	set_item(struct s_map_item_container *container, t_map *new_map)
 {
-	_map_set_by_hash(new_map, container->hash, container->key,
-		container->item);
+	_map_set_by_hash(new_map, container->hash, container->item);
 }
 
 static void	redistribute_items(t_map *map,
@@ -47,16 +47,16 @@ static void	redistribute_items(t_map *map,
 	while (i < old_size)
 	{
 		if (old_array[i].is_list)
-			list_capply(&old_array[i].items, (t_capply_func) set_item,
+			list_capply(&old_array[i].items, (t_capply_lfn) set_item,
 				map);
-		else if (old_array[i].container.key && old_array[i].container.item)
+		else if (old_array[i].container.item.key
+			&& old_array[i].container.item.value)
 		{
 			_map_set_by_hash(map,
 				old_array[i].container.hash,
-				old_array[i].container.key,
 				old_array[i].container.item);
 			list_apply(&old_array[i].items,
-				(t_apply_func)_map_item_container_delete);
+				(t_apply_lfn)_map_item_container_delete);
 			list_deinit(&old_array[i].items);
 		}
 		i++;
@@ -83,4 +83,26 @@ void	_map_realloc(t_map *map, t_uint new_size)
 	map->bucket_array_size = new_size;
 	map->upper_realloc_value = map->upper_realloc_ratio * new_size;
 	map->lower_realloc_value = map->lower_realloc_ratio * new_size;
+}
+
+t_map	*map_copy(t_map *map)
+{
+	t_map	*copy;
+	t_uint	i;
+
+	copy = map_new(map->hash_func, map->equals_func);
+	map_set_realloc_threshold(copy, map->upper_realloc_ratio,
+		map->lower_realloc_ratio, map->scaling_ratio);
+	_map_realloc(copy, map->bucket_array_size);
+	copy->size = map->size;
+	i = 0;
+	while (i < copy->bucket_array_size)
+	{
+		copy->bucket_array[i] = map->bucket_array[i];
+		if (copy->bucket_array[i].is_list)
+			list_init_from_list(&copy->bucket_array[i].items,
+				&map->bucket_array[i].items);
+		i++;
+	}
+	return (copy);
 }

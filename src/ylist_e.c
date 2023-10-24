@@ -14,7 +14,7 @@
 #include "ydefines.h"
 #include <stdlib.h>
 
-void	list_icapply(t_list *list, t_icapply_func f, void *context)
+void	list_icapply(t_list *list, t_icapply_lfn f, void *context)
 {
 	unsigned int	i;
 
@@ -26,7 +26,7 @@ void	list_icapply(t_list *list, t_icapply_func f, void *context)
 	}
 }
 
-t_list	*list_icmap(t_list *list, t_icmap_func f, void *context)
+t_list	*list_icmap(t_list *list, t_icmap_lfn f, void *context)
 {
 	t_list			*result;
 	unsigned int	i;
@@ -51,7 +51,7 @@ t_list	*list_icmap(t_list *list, t_icmap_func f, void *context)
 	return (result);
 }
 
-void	list_icfilter(t_list *list, t_icfilter_func f, void *context)
+void	list_icfilter(t_list *list, t_icfilter_lfn f, void *context)
 {
 	unsigned int	read_i;
 	unsigned int	write_i;
@@ -77,7 +77,7 @@ void	list_icfilter(t_list *list, t_icfilter_func f, void *context)
 	_list_realloc(list, (1 + list->size / LIST_C_STEP) * LIST_C_STEP);
 }
 
-t_list	*list_icfilter_new(t_list *list, t_icfilter_func f, void *context)
+t_list	*list_icfilter_new(t_list *list, t_icfilter_lfn f, void *context)
 {
 	unsigned int	i;
 	t_list			*result;

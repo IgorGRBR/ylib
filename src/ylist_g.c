@@ -30,3 +30,19 @@ void	list_deinit(t_list *list)
 		free(list->data);
 	list->data = YNULL;
 }
+
+t_bool		list_init_from_list(t_list *list, t_list *other)
+{
+	t_uint	i;
+
+	list->size = other->size;
+	list->capacity = other->capacity;
+	list->data = (void **)malloc(sizeof (void *) * list->capacity);
+	i = 0;
+	while (i < list->size)
+	{
+		list->data[i] = other->data[i];
+		i++;
+	}
+	return (TRUE);
+}

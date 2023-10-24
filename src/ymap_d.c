@@ -16,7 +16,7 @@
 #include "ydefines.h"
 #include <stdlib.h>
 
-t_bool	map_insert(t_map *map, void *key, void *item)
+t_bool	map_insert(t_map *map, void *key, void *value)
 {
 	t_uint						hash;
 	struct s_map_bucket			*bucket;
@@ -28,13 +28,13 @@ t_bool	map_insert(t_map *map, void *key, void *item)
 			map->equals_func);
 	if (container)
 		return (FALSE);
-	_map_set_by_hash(map, hash, key, item);
+	_map_set_by_hash(map, hash, (t_kv_pair){key, value});
 	return (TRUE);
 }
 
-void	map_set(t_map *map, void *key, void *item)
+void	map_set(t_map *map, void *key, void *value)
 {
-	_map_set_by_hash(map, map->hash_func(key), key, item);
+	_map_set_by_hash(map, map->hash_func(key), (t_kv_pair){key, value});
 }
 
 t_bool	map_remove(t_map *map, void *key)
@@ -69,6 +69,6 @@ void	*map_get(t_map *map, void *key)
 	container = _map_item_container_find_item_by_hash(bucket, hash, key,
 			map->equals_func);
 	if (container)
-		return (container->item);
+		return (container->item.value);
 	return (NULL);
 }

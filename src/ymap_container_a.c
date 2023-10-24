@@ -17,13 +17,12 @@
 #include <stdlib.h>
 
 struct s_map_item_container	*
-	_map_item_container_new(t_uint hash, void *key, void *item)
+	_map_item_container_new(t_uint hash, t_kv_pair item)
 {
 	struct s_map_item_container	*container;
 
 	container = malloc(sizeof (struct s_map_item_container));
 	container->hash = hash;
-	container->key = key;
 	container->item = item;
 	return (container);
 }
@@ -44,7 +43,7 @@ struct s_map_item_container
 		return (YNULL);
 	else if (!bucket->is_list
 		&& bucket->container.hash == hash
-		&& efunc(bucket->container.key, key))
+		&& efunc(bucket->container.item.key, key))
 		return (&bucket->container);
 	else if (bucket->is_list)
 	{
@@ -52,7 +51,7 @@ struct s_map_item_container
 		while (list_iter_next(&it))
 		{
 			container = it.value;
-			if (container->hash == hash && efunc(container->key, key))
+			if (container->hash == hash && efunc(container->item.key, key))
 				return (container);
 		}
 	}

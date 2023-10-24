@@ -68,7 +68,7 @@ void	map_deinit(t_map *map)
 		if (map->bucket_array[i].is_list)
 		{
 			list_apply(&map->bucket_array[i].items,
-				(t_apply_func)_map_item_container_delete);
+				(t_apply_lfn)_map_item_container_delete);
 			list_deinit(&map->bucket_array[i].items);
 		}
 		i++;

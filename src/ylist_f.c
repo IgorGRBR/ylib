@@ -14,7 +14,7 @@
 #include "ydefines.h"
 #include <stdlib.h>
 
-void	list_capply(t_list *list, t_capply_func f, void *context)
+void	list_capply(t_list *list, t_capply_lfn f, void *context)
 {
 	unsigned int	i;
 
@@ -26,7 +26,7 @@ void	list_capply(t_list *list, t_capply_func f, void *context)
 	}
 }
 
-t_list	*list_cmap(t_list *list, t_cmap_func f, void *context)
+t_list	*list_cmap(t_list *list, t_cmap_lfn f, void *context)
 {
 	t_list			*result;
 	unsigned int	i;
@@ -51,7 +51,7 @@ t_list	*list_cmap(t_list *list, t_cmap_func f, void *context)
 	return (result);
 }
 
-void	list_cfilter(t_list *list, t_cfilter_func f, void *context)
+void	list_cfilter(t_list *list, t_cfilter_lfn f, void *context)
 {
 	unsigned int	read_i;
 	unsigned int	write_i;
@@ -77,7 +77,7 @@ void	list_cfilter(t_list *list, t_cfilter_func f, void *context)
 	_list_realloc(list, (1 + list->size / LIST_C_STEP) * LIST_C_STEP);
 }
 
-t_list	*list_cfilter_new(t_list *list, t_cfilter_func f, void *context)
+t_list	*list_cfilter_new(t_list *list, t_cfilter_lfn f, void *context)
 {
 	unsigned int	i;
 	t_list			*result;
