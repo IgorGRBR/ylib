@@ -78,16 +78,16 @@ void	string_resize(t_string *str, unsigned int new_size)
 		free(old_cstr);
 }
 
-char	*string_find_char(t_string *str, char c)
+int	string_find_char(t_string *str, char c)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (i < str->size)
+	while (i < (int)str->size)
 	{
 		if (str->cstr[i] == c)
-			return (str->cstr + i);
+			return (i);
 		i++;
 	}
-	return (YNULL);
+	return (-1);
 }

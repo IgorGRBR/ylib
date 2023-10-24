@@ -12,7 +12,6 @@ Libft is a C library that is used in 42 School and developed by its students. yl
 ### 1.0
 * Initial release.
 
-
 # Modules
 ylib is split into several modules (.h files), each one of them can be used on its own, but may depend on other modules (i.e. almost every module depends on ytypes.h). To include every module, use:
 `#import <ylib.h>`.
@@ -32,3 +31,8 @@ To avoid potential name clashes, it is recomended to only include ytypes.h in ot
 - `yprint_format.h` - is for internal use only. Do not include it in your projects. It contains helper functions for yprintf formatting.
 - `ystring.h` - contains functions for manipulating strings. Strings are an alternative to cstrings that contain both cstring itself and its length. They were developed for a scenario where the support of various UTF encodings was necessary, however I haven't encountered such projects yet.
 - `yvec2.h` - contains operations for 2D vectors of ints and doubles.
+
+## TODO:
+* Improve documentation
+* Make tests
+* Finish implementing all string functions

@@ -17,10 +17,10 @@
 // #include <stdlib.h>
 #include "ydefines.h"
 
-char	*string_find(t_string *str, t_string *sub)
+int string_find(t_string *str, t_string *sub)
 {
 	if (!str || !sub)
-		return (YNULL);
+		return (-1);
 	return (string_find_cstr(str, sub->cstr));
 }
 

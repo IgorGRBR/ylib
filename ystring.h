@@ -62,11 +62,11 @@ void		string_resize(t_string *str, unsigned int new_size);
 
 // Finds the address of first occurence of character c in string str. Returns
 // NULL/YNULL if c wasn't found
-char		*string_find_char(t_string *str, char c);
+int		    string_find_char(t_string *str, char c);
 
 // Same as string_find_char, except this function finds the last occurence of
 // character c in string str
-char		*string_find_last_char(t_string *str, char c);
+int		    string_find_last_char(t_string *str, char c);
 
 // Compare 2 strings. Returns the difference of first 2 non-matching characters
 // or 0 if all characters are match
@@ -74,7 +74,7 @@ int			string_compare(t_string *str1, t_string *str2);
 
 // Returns the address of the substring within a string, or NULL/YNULL if
 // string does not contain the substring
-char		*string_find(t_string *str, t_string *sub);
+int		    string_find(t_string *str, t_string *sub);
 
 // Creates a new string by concatenating 2 strings
 t_string	*string_concat(t_string *str, t_string *str2);
@@ -89,7 +89,7 @@ t_string	*string_trim(t_string *str, t_string *set);
 
 // Same as string_find, except this function looks for cstring within a
 // string
-char		*string_find_cstr(t_string *str, const char *cstr);
+int		    string_find_cstr(t_string *str, const char *cstr);
 
 // Same as string_concat, except it concatenates the cstring instead of
 // a string

@@ -16,18 +16,18 @@
 // #include <stdlib.h>
 #include "ydefines.h"
 
-char	*string_find_last_char(t_string *str, char c)
+int	string_find_last_char(t_string *str, char c)
 {
-	unsigned int	i;
+	int	i;
 
 	i = str->size;
 	while (i > 0)
 	{
 		i--;
 		if (str->cstr[i] == c)
-			return (str->cstr + i);
+			return (i);
 	}
-	return (YNULL);
+	return (-1);
 }
 
 int	string_compare(t_string *str1, t_string *str2)
@@ -51,28 +51,28 @@ int	string_compare(t_string *str1, t_string *str2)
 	return (0);
 }
 
-char	*string_find_cstr(t_string *str, const char *cstr)
+int	string_find_cstr(t_string *str, const char *cstr)
 {
-	unsigned int	i;
-	unsigned int	clen;
-	unsigned int	s;
+	int	i;
+	int	clen;
+	int	s;
 
 	i = 0;
 	clen = cstr_len(cstr);
-	if (clen > str->size || clen == 0)
-		return (YNULL);
+	if (clen > (int)str->size || clen == 0)
+		return (-1);
 	s = 0;
-	while (i - s <= str->size - clen)
+	while (i - s <= (int)str->size - clen)
 	{
 		if (str->cstr[i] != cstr[s])
 			s = 0;
 		else
 			s++;
 		if (s == clen)
-			return (str->cstr + (i - s + 1));
+			return ((i - s + 1));
 		i++;
 	}
-	return (YNULL);
+	return (-1);
 }
 
 t_string	*string_concat_cstr(t_string *str, char const *cstr)
