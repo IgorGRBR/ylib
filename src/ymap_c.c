@@ -21,7 +21,7 @@ static void	insert_container(t_map *map, struct s_map_bucket *bucket,
 {
 	if (bucket->is_list)
 		list_insert(&bucket->items, container);
-	else if (!bucket->container.item.key)
+	else if (!bucket->container.item.key && !bucket->container.hash)
 	{
 		bucket->container = *container;
 		_map_item_container_delete(container);

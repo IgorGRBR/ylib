@@ -40,12 +40,12 @@ static t__mic	*get_next_container(t_map *map, t_uint *bucket, t_list_iter *it)
 		&& (bucket_ptr->container.hash == 0
 			|| bucket_ptr->container.item.key == YNULL))
 		{
-			(void)*bucket++;
+			(void)(*bucket)++;
 			bucket_ptr = map->bucket_array + *bucket;
 		}
 	if (*bucket >= map->bucket_array_size)
 		return (YNULL);
-	(void)*bucket++;
+	(void)(*bucket)++;
 	if (bucket_ptr->is_list)
 	{
 		*it = list_iter(&bucket_ptr->items);
@@ -63,7 +63,7 @@ t_bool		map_iter_next(t_map_iter *iter)
 		return (FALSE);
 	container = get_next_container(iter->map, &iter->bucket,
 		&iter->bucket_iter);
-	if (iter->bucket < iter->map->bucket_array_size)
+	if (container && iter->bucket < iter->map->bucket_array_size)
 	{
 		iter->key = container->item.key;
 		iter->value = container->item.value;

@@ -36,3 +36,4 @@ To avoid potential name clashes, it is recomended to only include ytypes.h in ot
 * Improve documentation
 * Make tests
 * Finish implementing all string functions
+* Rename to yclib (or come up with a better name)

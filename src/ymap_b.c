@@ -47,18 +47,18 @@ static void	redistribute_items(t_map *map,
 	while (i < old_size)
 	{
 		if (old_array[i].is_list)
+		{
 			list_capply(&old_array[i].items, (t_capply_lfn) set_item,
 				map);
-		else if (old_array[i].container.item.key
-			&& old_array[i].container.item.value)
-		{
-			_map_set_by_hash(map,
-				old_array[i].container.hash,
-				old_array[i].container.item);
 			list_apply(&old_array[i].items,
 				(t_apply_lfn)_map_item_container_delete);
 			list_deinit(&old_array[i].items);
 		}
+		else if (old_array[i].container.item.key
+			&& old_array[i].container.item.value)
+			_map_set_by_hash(map,
+				old_array[i].container.hash,
+				old_array[i].container.item);
 		i++;
 	}
 }
@@ -73,16 +73,16 @@ void	_map_realloc(t_map *map, t_uint new_size)
 	old_array = map->bucket_array;
 	map->bucket_array = malloc(sizeof (struct s_map_bucket) * new_size);
 	init_bucket_array(map->bucket_array, new_size);
+	map->upper_realloc_value = map->upper_realloc_ratio * new_size;
+	map->lower_realloc_value = map->lower_realloc_ratio * new_size;
+	old_size = map->bucket_array_size;
+	map->bucket_array_size = new_size;
 	if (old_array)
 	{
-		old_size = map->bucket_array_size;
 		map->bucket_array_size = new_size;
 		redistribute_items(map, old_array, old_size);
 		free(old_array);
 	}
-	map->bucket_array_size = new_size;
-	map->upper_realloc_value = map->upper_realloc_ratio * new_size;
-	map->lower_realloc_value = map->lower_realloc_ratio * new_size;
 }
 
 t_map	*map_copy(t_map *map)
