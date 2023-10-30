@@ -33,7 +33,7 @@ void	_map_item_container_delete(struct s_map_item_container *container)
 }
 
 struct s_map_item_container
-	*_map_item_container_find_item_by_hash(struct s_map_bucket *bucket,
+	*_map_item_container_find_item_by_hash(t_list *bucket,
 			t_uint hash, void *key, t_equals_func efunc)
 {
 	t_list_iter					it;
@@ -41,19 +41,12 @@ struct s_map_item_container
 
 	if (!bucket)
 		return (YNULL);
-	else if (!bucket->is_list
-		&& bucket->container.hash == hash
-		&& efunc(bucket->container.item.key, key))
-		return (&bucket->container);
-	else if (bucket->is_list)
+	it = list_iter(bucket);
+	while (list_iter_next(&it))
 	{
-		it = list_iter(&bucket->items);
-		while (list_iter_next(&it))
-		{
-			container = it.value;
-			if (container->hash == hash && efunc(container->item.key, key))
-				return (container);
-		}
+		container = it.value;
+		if (container->hash == hash && efunc(container->item.key, key))
+			return (container);
 	}
 	return (YNULL);
 }

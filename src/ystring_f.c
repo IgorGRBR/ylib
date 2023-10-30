@@ -12,9 +12,7 @@
 
 #include "ystring.h"
 #include "ylist.h"
-// #include "ychar.h"
 #include "ycstr.h"
-// #include <stdlib.h>
 #include "ydefines.h"
 
 int string_find(t_string *str, t_string *sub)

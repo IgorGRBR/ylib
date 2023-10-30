@@ -83,20 +83,13 @@ struct s_map_item_container
 	t_kv_pair	item;
 };
 
-// Hash Map bucket container (is private/not meant to be used outside of yLib)
-struct	s_map_bucket
-{
-	t_bool						is_list;
-	t_list						items;
-	struct s_map_item_container	container;
-};
-
 // Hash Map container
+// (bucket_array is array of lists of s_map_item_containers)
 typedef struct s_map
 {
 	t_hash_func			hash_func;
 	t_equals_func		equals_func;
-	struct s_map_bucket	*bucket_array;
+	t_list				*bucket_array;
 	t_uint				bucket_array_size;
 	double				upper_realloc_ratio;
 	double				lower_realloc_ratio;

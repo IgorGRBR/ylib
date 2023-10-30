@@ -12,6 +12,7 @@
 
 #include "ylist.h"
 #include "ydefines.h"
+#include "ytypes.h"
 #include <stdlib.h>
 
 t_bool	list_init(t_list *list)
@@ -45,4 +46,32 @@ t_bool		list_init_from_list(t_list *list, t_list *other)
 		i++;
 	}
 	return (TRUE);
+}
+
+int	list_find_ptr(t_list *list, void *item)
+{
+	t_uint	i;
+
+	i = 0;
+	while (i < list->size)
+	{
+		if (list->data[i] == item)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int	list_find_eq(t_list *list, t_equals_func f, void *item)
+{
+	t_uint	i;
+
+	i = 0;
+	while (i < list->size)
+	{
+		if (f(list->data[i], item))
+			return (i);
+		i++;
+	}
+	return (-1);
 }

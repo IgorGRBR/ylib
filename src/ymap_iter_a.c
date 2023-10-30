@@ -29,30 +29,22 @@ t_map_iter	map_iter(t_map *map)
 
 static t__mic	*get_next_container(t_map *map, t_uint *bucket, t_list_iter *it)
 {
-	t__mbk	*bucket_ptr;
+	t_list	*bucket_ptr;
 
 	if (*bucket >= map->bucket_array_size)
 		return (YNULL);
 	if (list_iter_next(it))
 		return (it->value);
-	bucket_ptr = map->bucket_array + *bucket;
-	while (*bucket < map->bucket_array_size && !bucket_ptr->is_list
-		&& (bucket_ptr->container.hash == 0
-			|| bucket_ptr->container.item.key == YNULL))
-		{
-			(void)(*bucket)++;
-			bucket_ptr = map->bucket_array + *bucket;
-		}
-	if (*bucket >= map->bucket_array_size)
-		return (YNULL);
-	(void)(*bucket)++;
-	if (bucket_ptr->is_list)
+	bucket_ptr = &map->bucket_array[*bucket];
+	while (*bucket < map->bucket_array_size)
 	{
-		*it = list_iter(&bucket_ptr->items);
-		list_iter_next(it);
-		return (it->value);
+		*it = list_iter(bucket_ptr);
+		(void)(*bucket)++;
+		if (list_iter_next(it))
+			return (it->value);
+		bucket_ptr = &map->bucket_array[*bucket];
 	}
-	return (&bucket_ptr->container);
+	return (YNULL);
 }
 
 t_bool		map_iter_next(t_map_iter *iter)
@@ -63,7 +55,7 @@ t_bool		map_iter_next(t_map_iter *iter)
 		return (FALSE);
 	container = get_next_container(iter->map, &iter->bucket,
 		&iter->bucket_iter);
-	if (container && iter->bucket < iter->map->bucket_array_size)
+	if (container)
 	{
 		iter->key = container->item.key;
 		iter->value = container->item.value;

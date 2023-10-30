@@ -19,8 +19,8 @@
 
 t_bool	map_has(t_map *map, void *key)
 {
-	t_uint				hash;
-	struct s_map_bucket	*bucket;
+	t_uint	hash;
+	t_list	*bucket;
 
 	hash = map->hash_func(key);
 	bucket = &map->bucket_array[hash % map->bucket_array_size];

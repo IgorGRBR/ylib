@@ -6,6 +6,13 @@ Libft is a C library that is used in 42 School and developed by its students. yl
 *My definition of "compatible" is that the norminette doesn't complain about the code :).
 
 ## What's new
+### 1.2
+* Added hashmaps and hashmap iterators.
+* Implemented string_iapply, string_imap and string_ifilter_new.
+* Added list_find_eq and list_find_ptr.
+* Changed API for string_find* functions to return indexes instead of pointers.
+* Changed names of function typedefs for lists.
+* Added get_next_prime function to search for the next prime number after n.
 ### 1.1
 * Added initializers and deinitializers for lists and strings.
 * Added string and cstring formatting.
@@ -35,5 +42,4 @@ To avoid potential name clashes, it is recomended to only include ytypes.h in ot
 ## TODO:
 * Improve documentation
 * Make tests
-* Finish implementing all string functions
 * Rename to yclib (or come up with a better name)

@@ -12,10 +12,9 @@
 
 #include "ystring.h"
 #include "ylist.h"
-// #include "ychar.h"
 #include "ycstr.h"
-// #include <stdlib.h>
 #include "ydefines.h"
+#include "ytypes.h"
 
 static int	char_in_set(char c, char const *set)
 {
@@ -47,25 +46,53 @@ t_string	*string_trim_cstr(t_string *str, char const *set)
 	return (string_substring(str, c, i + 1));
 }
 
-// TODO
-t_string	*string_map(t_string *str, char (*f)(char, unsigned int))
+t_string	*string_imap(t_string *str, char (*f)(char, unsigned int))
 {
-	(void)str;
-	(void)f;
-	return (YNULL);
+	t_string	*result;
+	t_uint		i;
+
+	result = string_new();
+	string_resize(result, str->size);
+	i = 0;
+	while (i < str->size)
+	{
+		result->cstr[i] = f(str->cstr[i], i);
+		i++;
+	}
+	return (result);
 }
 
-// TODO
-void	string_apply(t_string *str, void (*f)(char, unsigned int))
+void	string_iapply(t_string *str, void (*f)(char, unsigned int))
 {
-	(void)str;
-	(void)f;
+	t_uint	i;
+
+	i = 0;
+	while (i < str->size)
+	{
+		f(str->cstr[i], i);
+		i++;
+	}
 }
 
-// TODO
-t_string	*string_filter(t_string *str, t_bool (*f)(char, unsigned int))
+t_string	*string_ifilter_new(t_string *str, t_bool (*f)(char, unsigned int))
 {
-	(void)str;
-	(void)f;
-	return (YNULL);
+	t_string	*result;
+	t_uint		i;
+	t_uint		j;
+
+	result = string_new();
+	string_resize(result, str->size);
+	i = 0;
+	j = 0;
+	while (i < str->size)
+	{
+		if(f(str->cstr[i], i))
+		{
+			result->cstr[j] = str->cstr[i];
+			j++;
+		}
+		i++;
+	}
+	string_resize(result, j);
+	return (result);
 }

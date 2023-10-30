@@ -135,6 +135,12 @@ void		list_icfilter(t_list *list, t_icfilter_lfn f, void *context);
 // Build a new, filtered list with context
 t_list		*list_icfilter_new(t_list *list, t_icfilter_lfn f, void *context);
 
+// Find an item inside a list using pointer equality
+int			list_find_ptr(t_list *list, void *item);
+
+// Find an item inside a list using equality function
+int			list_find_eq(t_list *list, t_equals_func f, void *item);
+
 // Creates a list iterator for the list
 t_list_iter	list_iter(t_list *list);
 

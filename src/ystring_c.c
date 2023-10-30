@@ -13,7 +13,6 @@
 #include "ystring.h"
 #include "ylist.h"
 #include "ycstr.h"
-// #include <stdlib.h>
 #include "ydefines.h"
 
 int	string_find_last_char(t_string *str, char c)

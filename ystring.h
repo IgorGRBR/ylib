@@ -107,13 +107,13 @@ t_string	*string_trim_cstr(t_string *str, char const *set);
 t_list		*string_split(t_string *str, char c);
 
 // Map the characters of a string into a new one
-t_string	*string_map(t_string *str, char (*f)(char, unsigned int));
+t_string	*string_imap(t_string *str, char (*f)(char, unsigned int));
 
 // Apply a function over all characters of a string
-void		string_apply(t_string *str, void (*f)(char, unsigned int));
+void		string_iapply(t_string *str, void (*f)(char, unsigned int));
 
 // Create a new string by applying filter function to a string
-t_string	*string_filter(t_string *str, t_bool (*f)(char, unsigned int));
+t_string	*string_ifilter_new(t_string *str, t_bool (*f)(char, unsigned int));
 
 // Create a reversed string
 t_string	*string_reverse(t_string *str);

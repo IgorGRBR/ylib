@@ -18,9 +18,9 @@
 
 t_bool	map_insert(t_map *map, void *key, void *value)
 {
-	t_uint						hash;
-	struct s_map_bucket			*bucket;
-	struct s_map_item_container	*container;
+	t_uint	hash;
+	t_list	*bucket;
+	t__mic	*container;
 
 	hash = map->hash_func(key);
 	bucket = &map->bucket_array[hash % map->bucket_array_size];
@@ -39,9 +39,9 @@ void	map_set(t_map *map, void *key, void *value)
 
 t_bool	map_remove(t_map *map, void *key)
 {
-	t_uint						hash;
-	struct s_map_bucket			*bucket;
-	struct s_map_item_container	*container;
+	t_uint	hash;
+	t_list	*bucket;
+	t__mic	*container;
 
 	hash = map->hash_func(key);
 	bucket = &map->bucket_array[hash % map->bucket_array_size];
@@ -60,9 +60,9 @@ void	map_unset(t_map *map, void *key)
 
 void	*map_get(t_map *map, void *key)
 {
-	t_uint						hash;
-	struct s_map_bucket			*bucket;
-	struct s_map_item_container	*container;
+	t_uint	hash;
+	t_list	*bucket;
+	t__mic	*container;
 
 	hash = map->hash_func(key);
 	bucket = &map->bucket_array[hash % map->bucket_array_size];

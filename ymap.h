@@ -27,7 +27,6 @@
 # endif
 
 typedef struct s_map_item_container	t__mic;
-typedef struct s_map_bucket			t__mbk;
 
 // Create and initialize a new empty map with specified equals and hashing
 // functions. If efunc is NULL, then equality will be checked by comparing
@@ -94,9 +93,14 @@ t__mic		*_map_item_container_new(t_uint hash, t_kv_pair item);
 // Private function! Deinitializes and deallocates map item container
 void		_map_item_container_delete(t__mic *container);
 
+// Private function! Checks if hash inside the container is equal to a provided
+// one
+t_bool		_map_item_hash_eq(t__mic *container, t_uint *hash);
+
 // Private function! Returns a pointer to the item container
-t__mic		*_map_item_container_find_item_by_hash(t__mbk *bucket,
+t__mic		*_map_item_container_find_item_by_hash(t_list *bucket,
 				t_uint hash, void *key, t_equals_func efunc);
+
 
 // Private functions! These functions resize map's bucket container size if it
 // meets reallocation criteria.
