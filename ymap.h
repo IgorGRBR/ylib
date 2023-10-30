@@ -93,10 +93,6 @@ t__mic		*_map_item_container_new(t_uint hash, t_kv_pair item);
 // Private function! Deinitializes and deallocates map item container
 void		_map_item_container_delete(t__mic *container);
 
-// Private function! Checks if hash inside the container is equal to a provided
-// one
-t_bool		_map_item_hash_eq(t__mic *container, t_uint *hash);
-
 // Private function! Returns a pointer to the item container
 t__mic		*_map_item_container_find_item_by_hash(t_list *bucket,
 				t_uint hash, void *key, t_equals_func efunc);
