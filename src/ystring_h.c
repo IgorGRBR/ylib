@@ -48,7 +48,7 @@ t_bool	string_init_from_char_list(t_string *str, t_list *clist)
 	return (TRUE);
 }
 
-t_bool	string_copy_from_string(t_string *str, t_string *str2)
+t_bool	string_copy_from_string(t_string *str, const t_string *str2)
 {
 	unsigned int	i;
 
@@ -62,4 +62,26 @@ t_bool	string_copy_from_string(t_string *str, t_string *str2)
 	}
 	str->cstr[i] = '\0';
 	return (TRUE);
+}
+
+t_string	*string_join(t_list *strings, t_string *delim)
+{
+	return (string_join_cstr(strings, delim->cstr));
+}
+
+t_string	*string_join_cstr(t_list *strings, char *delim)
+{
+	t_string	*result;
+	t_uint		i;
+
+	i = 0;
+	result = string_from_cstr("");
+	while (i < strings->size)
+	{
+		string_append(result, list_get(strings, i));
+		if (i != strings->size - 1)
+			string_append_cstr(result, delim);
+		i++;
+	}
+	return (result);
 }

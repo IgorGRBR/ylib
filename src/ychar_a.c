@@ -24,7 +24,7 @@ t_bool	is_digit(char c)
 
 t_bool	is_alnum(char c)
 {
-	return (is_alpha(c) && is_digit(c));
+	return (is_alpha(c) || is_digit(c));
 }
 
 t_bool	is_ascii(unsigned char c)

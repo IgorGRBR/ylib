@@ -61,8 +61,12 @@ void		_map_set_by_hash(t_map *map, t_uint hash, t_kv_pair item);
 // hashing process.
 void		_map_unset_by_hash(t_map *map, t_uint hash, void *key);
 
-// Sets the value of map at specified key to the item
+// Sets the value of the map at specified key to the item
 void		map_set(t_map *map, void *key, void *value);
+
+// Sets the value of the map at specified key without updating the value of key
+// if it exists
+void		map_set_value(t_map *map, void *key, void *value);
 
 // Removes item with specified key from the map if it exist. Returns TRUE
 // if item exists, otherwise returns FALSE

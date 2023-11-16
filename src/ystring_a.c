@@ -43,7 +43,7 @@ t_string	*string_from_char_list(t_list *clist)
 	return (str);
 }
 
-t_string	*string_copy(t_string *str)
+t_string	*string_copy(const t_string *str)
 {
 	t_string		*copy;
 

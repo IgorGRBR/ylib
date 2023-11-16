@@ -34,10 +34,10 @@ t_string	*string_from_char_list(t_list *clist);
 t_bool		string_init_from_char_list(t_string *str, t_list *clist);
 
 // Copy a string
-t_string	*string_copy(t_string *str);
+t_string	*string_copy(const t_string *str);
 
 // Initialize a new string as a copy of other string
-t_bool		string_copy_from_string(t_string *str, t_string *str2);
+t_bool		string_copy_from_string(t_string *str, const t_string *str2);
 
 // Deinitialize and delete a string
 void		string_delete(t_string *str);
@@ -118,7 +118,8 @@ t_string	*string_ifilter_new(t_string *str, t_bool (*f)(char, unsigned int));
 // Create a reversed string
 t_string	*string_reverse(t_string *str);
 
-// Create a substring from a string, starting at s and ending at e
+// Create a substring from a string, starting at s (inclusive) and ending at
+// e (exclusive)
 t_string	*string_substring(t_string *str, unsigned int s, unsigned int e);
 
 // Helper function to delete a string from within list_iapply (Deprecated)
@@ -142,5 +143,17 @@ t_string	*string_format(t_string *fmt_str, ...);
 
 // Interpolate provided parameter list into a template string
 t_string	*string_vformat(t_string *fmt_str, va_list *args);
+
+// Interpolate provided parameters into a template cstring
+t_string	*string_format_cstr(char *fmt_cstr, ...);
+
+// Interpolate provided parameter list into a template cstring
+t_string	*string_vformat_cstr(char *fmt_cstr, va_list *args);
+
+// Join list of strings into a single string with specified delimeter string
+t_string	*string_join(t_list *strings, t_string *delim);
+
+// Join list of strings into a single string with specified delimeter cstring
+t_string	*string_join_cstr(t_list *strings, char *delim);
 
 #endif

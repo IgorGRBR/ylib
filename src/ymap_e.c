@@ -55,3 +55,21 @@ void	map_set_realloc_threshold(t_map *map,
 	}
 }
 
+void	map_set_value(t_map *map, void *key, void *value)
+{
+	t_uint	hash;
+	t_list	*bucket;
+	t__mic	*container;
+
+	hash = map->hash_func(key);
+	bucket = &map->bucket_array[hash % map->bucket_array_size];
+	container = _map_item_container_find_item_by_hash(bucket, hash, key,
+		map->equals_func);
+	if (container)
+		container->item.value = value;
+	else
+	{
+		container = _map_item_container_new(hash, (t_kv_pair){key, value});
+		list_insert(bucket, container);
+	}
+}
