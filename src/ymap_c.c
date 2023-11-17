@@ -32,7 +32,7 @@ void	_map_set_by_hash(t_map *map, t_uint hash, t_kv_pair item)
 
 	bucket = &map->bucket_array[hash % map->bucket_array_size];
 	container = _map_item_container_find_item_by_hash(bucket, hash,
-		item.key, map->equals_func);
+			item.key, map->equals_func);
 	if (container)
 	{
 		*container = (t__mic){hash, item};
@@ -51,7 +51,7 @@ void	_map_unset_by_hash(t_map *map, t_uint hash, void *key)
 
 	bucket = &map->bucket_array[hash % map->bucket_array_size];
 	container = _map_item_container_find_item_by_hash(bucket, hash,
-		key, map->equals_func);
+			key, map->equals_func);
 	if (container)
 	{
 		*container = (t__mic){0, {YNULL, YNULL}};

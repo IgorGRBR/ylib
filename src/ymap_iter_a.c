@@ -47,14 +47,14 @@ static t__mic	*get_next_container(t_map *map, t_uint *bucket, t_list_iter *it)
 	return (YNULL);
 }
 
-t_bool		map_iter_next(t_map_iter *iter)
+t_bool	map_iter_next(t_map_iter *iter)
 {
 	t__mic	*container;
 
 	if (!iter || !iter->map)
 		return (FALSE);
 	container = get_next_container(iter->map, &iter->bucket,
-		&iter->bucket_iter);
+			&iter->bucket_iter);
 	if (container)
 	{
 		iter->key = container->item.key;

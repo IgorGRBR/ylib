@@ -32,7 +32,7 @@ void	list_deinit(t_list *list)
 	list->data = YNULL;
 }
 
-t_bool		list_init_from_list(t_list *list, t_list *other)
+t_bool	list_init_from_list(t_list *list, t_list *other)
 {
 	t_uint	i;
 

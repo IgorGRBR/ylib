@@ -86,7 +86,7 @@ t_string	*string_ifilter_new(t_string *str, t_bool (*f)(char, unsigned int))
 	j = 0;
 	while (i < str->size)
 	{
-		if(f(str->cstr[i], i))
+		if (f(str->cstr[i], i))
 		{
 			result->cstr[j] = str->cstr[i];
 			j++;

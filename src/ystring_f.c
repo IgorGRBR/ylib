@@ -15,7 +15,7 @@
 #include "ycstr.h"
 #include "ydefines.h"
 
-int string_find(t_string *str, t_string *sub)
+int	string_find(t_string *str, t_string *sub)
 {
 	if (!str || !sub)
 		return (-1);
