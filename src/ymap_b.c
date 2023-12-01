@@ -76,6 +76,8 @@ t_map	*map_copy(t_map *map)
 	t_map	*copy;
 	t_uint	i;
 
+	if (!map)
+		return (YNULL);
 	copy = map_new(map->hash_func, map->equals_func);
 	map_set_realloc_threshold(copy, map->upper_realloc_ratio,
 		map->lower_realloc_ratio, map->scaling_ratio);

@@ -13,6 +13,7 @@
 #include "ycstr.h"
 #include "ydefines.h"
 #include "ymath.h"
+#include "ytypes.h"
 #include <stdlib.h>
 
 char	*cstr_itoa(int n)

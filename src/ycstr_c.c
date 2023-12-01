@@ -89,3 +89,32 @@ char	*cstr_vformat(const char *fmt_cstr, va_list *args)
 	sub_cstr = cstr_sub(fmt_cstr, i[0], i[1] - i[0]);
 	return (join_cstrs(cstr, sub_cstr));
 }
+
+t_bool	cstr_try_atoi(const char *cstr, int *i)
+{
+	int	result;
+	int	sign;
+
+	if (!cstr)
+		return (FALSE);
+	sign = 1;
+	result = 0;
+	while (*cstr == ' ' || *cstr == '\t' || *cstr == '\n'
+		|| *cstr == '\v' || *cstr == '\f' || *cstr == '\r')
+		cstr++;
+	if (*cstr == '+' || *cstr == '-')
+	{
+		if (*cstr == '-')
+			sign = -sign;
+		cstr++;
+	}
+	while (*cstr >= '0' && *cstr <= '9')
+	{
+		result = result * 10;
+		result += (int) *cstr - '0';
+		cstr++;
+	}
+	if (*cstr != '\0')
+		return (FALSE);
+	return (*i = result * sign, TRUE);
+}

@@ -13,9 +13,10 @@
 #ifndef YCSTR_H
 # define YCSTR_H
 
-// Return the length of cstring
 # include <stdarg.h>
+# include "ytypes.h"
 
+// Return the length of cstring
 unsigned int	cstr_len(const char *s);
 
 // Concatenate string src into dst buffer withy the size of dsize (equivalent
@@ -53,5 +54,9 @@ char			*cstr_format(const char *fmt_cstr, ...);
 
 // Interpolate provided parameter list into a template cstring
 char			*cstr_vformat(const char *fmt_cstr, va_list *args);
+
+// Try to convert string into a number. Returns TRUE if conversion is
+// successful, and writes the number into i. Otherwise returns FALSE
+t_bool			cstr_try_atoi(const char *cstr, int *i);
 
 #endif

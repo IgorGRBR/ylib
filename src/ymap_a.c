@@ -71,6 +71,7 @@ void	map_deinit(t_map *map)
 		i++;
 	}
 	free(map->bucket_array);
+	map->bucket_array = YNULL;
 	map->bucket_array_size = 0;
 	map->size = 0;
 }

@@ -47,6 +47,8 @@ t_string	*string_copy(const t_string *str)
 {
 	t_string		*copy;
 
+	if (!str)
+		return (YNULL);
 	copy = (t_string *)malloc(sizeof (t_string));
 	string_copy_from_string(copy, str);
 	return (copy);
