@@ -81,4 +81,8 @@ t_list			*read_file_to_lines(const t_string *str, int flags);
 // instead of string
 t_list			*read_file_to_lines_cstr(const char *str, int flags);
 
+// Read file from fd in its entirety into a string. Returns NULL/YNULL if
+// file descriptor is invalid
+t_string		*read_file_to_string(int fd);
+
 #endif

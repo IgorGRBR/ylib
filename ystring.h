@@ -64,6 +64,10 @@ void		string_resize(t_string *str, unsigned int new_size);
 // -1 if c wasn't found
 int			string_find_char(t_string *str, char c);
 
+// Finds the index of first occurence of character c in string str, starting
+// from i. Returns -1 if c wasn't found
+int			string_find_char_next(t_string *str, char c, t_uint i);
+
 // Same as string_find_char, except this function finds the last occurence of
 // character c in string str
 int			string_find_last_char(t_string *str, char c);
@@ -133,9 +137,9 @@ void		string_append2(t_string *str2, t_string *str);
 t_bool		string_equal(t_string *str, t_string *str2);
 
 // String equality check
-t_bool		string_equal_cstr(t_string *str, char *cstr);
+t_bool		string_equal_cstr(t_string *str, const char *cstr);
 
-// String hashing using mewmew hash
+// String hashing using murmur hash
 t_uint		string_hash(t_string *str);
 
 // Interpolate provided parameters into a template string

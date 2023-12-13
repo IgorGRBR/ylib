@@ -39,3 +39,14 @@ t_string	*string_vformat_cstr(char *fmt_cstr, va_list *args)
 	free(formatted);
 	return (str);
 }
+
+int	string_find_char_next(t_string *str, char c, t_uint i)
+{
+	while (i < str->size)
+	{
+		if (str->cstr[i] == c)
+			return ((int)i);
+		i++;
+	}
+	return (-1);
+}

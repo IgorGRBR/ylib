@@ -59,4 +59,13 @@ char			*cstr_vformat(const char *fmt_cstr, va_list *args);
 // successful, and writes the number into i. Otherwise returns FALSE
 t_bool			cstr_try_atoi(const char *cstr, int *i);
 
+// Checks if 2 cstrings are equal
+t_bool			cstr_equal(const char *cstr1, const char *cstr2);
+
+// Cstring hashing using murmur hash
+t_uint			cstr_hash(const char *cstr);
+
+// Private function! Murmur hashing algorithm
+t_uint			_murmur3_32(const t_uchar *key, t_uint len, t_uint seed);
+
 #endif
