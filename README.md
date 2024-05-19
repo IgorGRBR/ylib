@@ -6,6 +6,11 @@ Libft is a C library that is used in 42 School and developed by its students. yl
 *My definition of "compatible" is that the norminette doesn't complain about the code :).
 
 ## What's new
+### 1.3
+* Added element-wise vector multiplication and division functions.
+* Added *vec3.
+* Added read_file_to_string function that reads the entire file into a single string.
+* Added string_find_char_next that searches the string for a character starting from the specified offset.
 ### 1.2
 * Added hashmaps and hashmap iterators.
 * Implemented string_iapply, string_imap and string_ifilter_new.
@@ -39,8 +44,10 @@ To avoid potential name clashes, it is recomended to only include ytypes.h in ot
 - `yprint_format.h` - is for internal use only. Do not include it in your projects. It contains helper functions for yprintf formatting.
 - `ystring.h` - contains functions for manipulating strings. Strings are an alternative to cstrings that contain both cstring itself and its length. They were developed for a scenario where the support of various UTF encodings was necessary, however I haven't encountered such projects yet.
 - `yvec2.h` - contains operations for 2D vectors of ints and doubles.
+- `yvec3.h` - contains operations for 3D vectors of ints and doubles.
 
 ## TODO:
 * Improve documentation
 * Make tests
 * Rename to yclib (or come up with a better name)
+* Structure sources better (update Makefile for that)

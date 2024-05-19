@@ -25,4 +25,5 @@
 # include "yprint.h"
 # include "yio.h"
 # include "yvec2.h"
+# include "yvec3.h"
 #endif

@@ -12,7 +12,6 @@
 
 #ifndef YVEC2_H
 # define YVEC2_H
-# include "ydefines.h"
 # include "ytypes.h"
 
 // Create a new integer vector with specified x and y components
@@ -26,6 +25,12 @@ t_ivec2	ivec2_add(t_ivec2 a, t_ivec2 b);
 
 // Difference of 2 2D int vectors
 t_ivec2	ivec2_sub(t_ivec2 a, t_ivec2 b);
+
+// Element-wise multiplication of 2 2D int vectors
+t_ivec2	ivec2_mul(t_ivec2 a, t_ivec2 b);
+
+// Element-wise division of 2 2D int vectors
+t_ivec2	ivec2_div(t_ivec2 a, t_ivec2 b);
 
 // Dot product of 2 2D int vectors
 int		ivec2_dot(t_ivec2 a, t_ivec2 b);
@@ -65,6 +70,12 @@ t_dvec2	dvec2_add(t_dvec2 a, t_dvec2 b);
 
 // Difference of 2 double 2D vectors
 t_dvec2	dvec2_sub(t_dvec2 a, t_dvec2 b);
+
+// Element-wise multiplication of 2 2D double vectors
+t_dvec2	dvec2_mul(t_dvec2 a, t_dvec2 b);
+
+// Element-wise division of 2 2D double vectors
+t_dvec2	dvec2_div(t_dvec2 a, t_dvec2 b);
 
 // Dot product of 2 double 2D vectors
 double	dvec2_dot(t_dvec2 a, t_dvec2 b);

@@ -27,3 +27,4 @@ t_dvec2	ivec2_normalized(t_ivec2 a)
 {
 	return (dvec2_normalized(dvec2_new((double)a.x, (double) a.y)));
 }
+

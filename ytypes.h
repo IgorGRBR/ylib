@@ -57,12 +57,28 @@ typedef struct s_ivec2
 	int	y;
 }	t_ivec2;
 
-// 2D vector of doubels
+// 2D vector of doubles
 typedef struct s_dvec2
 {
 	double	x;
 	double	y;
 }	t_dvec2;
+
+// 3D vector of integers
+typedef struct s_ivec3
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_ivec3;
+
+// 3D vector of doubles
+typedef struct s_dvec3
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_dvec3;
 
 // Hash function for hash maps and sets
 typedef t_uint			(*t_hash_func)(void *);
