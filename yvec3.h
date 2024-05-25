@@ -53,6 +53,15 @@ t_ivec3	ivec3_negate(t_ivec3 a);
 // Normalized vector that points to the same direction as the int 3D vector
 t_dvec3	ivec3_normalized(t_ivec3 a);
 
+// Form a new ivec2 out of x and y components of ivec3
+t_ivec2	ivec3_xy(t_ivec3 a);
+
+// Form a new ivec2 out of x and z components of ivec3
+t_ivec2	ivec3_xz(t_ivec3 a);
+
+// Form a new ivec2 out of x and z components of ivec3
+t_ivec2	ivec3_yz(t_ivec3 a);
+
 // Create a new double 3D vector with specified x and y components
 t_dvec3	dvec3_new(double x, double y, double z);
 
@@ -94,5 +103,17 @@ t_dvec3	dvec3_negate(t_dvec3 a);
 
 // Normalized vector that points to the same direction as the double 3D vector
 t_dvec3	dvec3_normalized(t_dvec3 a);
+
+// Apply floor to dvec3 components and return ivec3
+t_ivec3	dvec3_floor(t_dvec3 a);
+
+// Form a new ivec2 out of x and y components of ivec3
+t_dvec2	dvec3_xy(t_dvec3 a);
+
+// Form a new ivec2 out of x and z components of ivec3
+t_dvec2	dvec3_xz(t_dvec3 a);
+
+// Form a new ivec2 out of x and z components of ivec3
+t_dvec2	dvec3_yz(t_dvec3 a);
 
 #endif
