@@ -98,4 +98,7 @@ t_dvec2	dvec2_negate(t_dvec2 a);
 // Normalized vector that points to the same direction as the double 2D vector
 t_dvec2	dvec2_normalized(t_dvec2 a);
 
+// Apply floor to dvec2 components and return ivec2
+t_ivec2	dvec2_floor(t_dvec2 a);
+
 #endif
