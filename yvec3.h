@@ -1,5 +1,14 @@
-// TODO: 42 header
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   yvec3.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihhrabar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 20:36:26 by ihhrabar          #+#    #+#             */
+/*   Updated: 2024/05/27 20:36:27 by ihhrabar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef YVEC3_H
 # define YVEC3_H
@@ -84,7 +93,7 @@ t_dvec3	dvec3_div(t_dvec3 a, t_dvec3 b);
 double	dvec3_dot(t_dvec3 a, t_dvec3 b);
 
 // Cross product of 2 double 3D vectors
-t_dvec3 dvec3_cross(t_dvec3 a, t_dvec3 b);
+t_dvec3	dvec3_cross(t_dvec3 a, t_dvec3 b);
 
 // Double 3D vector scaled by double scalar
 t_dvec3	dvec3_scale(t_dvec3 a, double scalar);

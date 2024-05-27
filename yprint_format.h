@@ -17,7 +17,8 @@
 # include "ytypes.h"
 
 // Represents conversion type
-typedef enum e_pconvtype {
+typedef enum e_pconvtype
+{
 	UNKNOWN,
 	CHAR,
 	STRING,
@@ -32,7 +33,8 @@ typedef enum e_pconvtype {
 }	t_pconvtype;
 
 // Printing conversion data
-typedef struct s_pconvdata {
+typedef struct s_pconvdata
+{
 	t_pconvtype		type;
 	t_bool			alt_form;
 	t_bool			left_adjust;

@@ -1,4 +1,14 @@
-// TODO: 42 header
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ydvec3_b.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihhrabar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 20:33:30 by ihhrabar          #+#    #+#             */
+/*   Updated: 2024/05/27 20:33:32 by ihhrabar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "yvec3.h"
 #include "ytypes.h"
@@ -13,7 +23,7 @@ t_dvec3	dvec3_scale(t_dvec3 a, double scalar)
 t_dvec3	dvec3_divide(t_dvec3 a, double scalar)
 {
 	return ((t_dvec3){.x = a.x / scalar, .y = a.y / scalar,
-		.z = a.z /scalar});
+		.z = a.z / scalar});
 }
 
 double	dvec3_length(t_dvec3 a)
