@@ -61,3 +61,9 @@ void	_map_unset_by_hash(t_map *map, t_uint hash, void *key)
 		_map_try_shrink(map);
 	}
 }
+
+void	map_delete(t_map *map)
+{
+	map_deinit(map);
+	free(map);
+}

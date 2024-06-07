@@ -16,6 +16,11 @@
 #include "ydefines.h"
 #include <stdlib.h>
 
+static t_uint	ptr_addr(void *p)
+{
+	return ((t_uint)(long)p);
+}
+
 static t_bool	ptr_equal(void *p1, void *p2)
 {
 	return (p1 == p2);
@@ -34,9 +39,11 @@ t_map	*map_new(t_hash_func hfunc, t_equals_func efunc)
 
 t_bool	map_init(t_map *map, t_hash_func hfunc, t_equals_func efunc)
 {
-	if (!map || !hfunc)
+	if (!map)
 		return (FALSE);
 	map->hash_func = hfunc;
+	if (!hfunc)
+		map->hash_func = ptr_addr;
 	map->equals_func = efunc;
 	if (!efunc)
 		map->equals_func = ptr_equal;
@@ -50,12 +57,6 @@ t_bool	map_init(t_map *map, t_hash_func hfunc, t_equals_func efunc)
 	map->bucket_array = YNULL;
 	_map_realloc(map, MAP_INITIAL_SIZE);
 	return (TRUE);
-}
-
-void	map_delete(t_map *map)
-{
-	map_deinit(map);
-	free(map);
 }
 
 void	map_deinit(t_map *map)
