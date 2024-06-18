@@ -31,10 +31,10 @@ static t__mic	*get_next_container(t_map *map, t_uint *bucket, t_list_iter *it)
 {
 	t_list	*bucket_ptr;
 
+	if (it->list && list_iter_next(it))
+		return (it->value);
 	if (*bucket >= map->bucket_array_size)
 		return (YNULL);
-	if (list_iter_next(it))
-		return (it->value);
 	bucket_ptr = &map->bucket_array[*bucket];
 	while (*bucket < map->bucket_array_size)
 	{

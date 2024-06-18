@@ -12,7 +12,6 @@
 
 #include "ylist.h"
 #include "ydefines.h"
-#include <stdlib.h>
 
 void	list_remove(t_list *list, void *e)
 {
