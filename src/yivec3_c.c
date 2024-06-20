@@ -29,3 +29,8 @@ t_dvec3	ivec3_normalized(t_ivec3 a)
 	return (dvec3_normalized(dvec3_new((double)a.x, (double) a.y,
 				(double) a.z)));
 }
+
+t_ivec3	ivec3_lerp(t_ivec3 a, t_ivec3 b, double i)
+{
+	return (ivec3_add(a, ivec3_dscale(ivec3_sub(b, a), i)));
+}

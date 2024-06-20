@@ -22,3 +22,8 @@ t_ivec2	ivec2_div(t_ivec2 a, t_ivec2 b)
 {
 	return ((t_ivec2){.x = a.x / b.x, .y = a.y / b.y});
 }
+
+t_ivec2	ivec2_lerp(t_ivec2 a, t_ivec2 b, double i)
+{
+	return (ivec2_add(a, ivec2_dscale(ivec2_sub(b, a), i)));
+}

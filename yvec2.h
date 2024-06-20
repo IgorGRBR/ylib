@@ -59,6 +59,9 @@ t_ivec2	ivec2_negate(t_ivec2 a);
 // Normalized vector that points to the same direction as the int 2D vector
 t_dvec2	ivec2_normalized(t_ivec2 a);
 
+// Performs a linear interpolation between a and b
+t_ivec2	ivec2_lerp(t_ivec2 a, t_ivec2 b, double i);
+
 // Create a new double 2D vector with specified x and y components
 t_dvec2	dvec2_new(double x, double y);
 
@@ -100,5 +103,8 @@ t_dvec2	dvec2_normalized(t_dvec2 a);
 
 // Apply floor to dvec2 components and return ivec2
 t_ivec2	dvec2_floor(t_dvec2 a);
+
+// Performs a linear interpolation between a and b
+t_dvec2	dvec2_lerp(t_dvec2 a, t_dvec2 b, double i);
 
 #endif

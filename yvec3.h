@@ -71,6 +71,9 @@ t_ivec2	ivec3_xz(t_ivec3 a);
 // Form a new ivec2 out of x and z components of ivec3
 t_ivec2	ivec3_yz(t_ivec3 a);
 
+// Performs a linear interpolation between a and b
+t_ivec3	ivec3_lerp(t_ivec3 a, t_ivec3 b, double i);
+
 // Create a new double 3D vector with specified x and y components
 t_dvec3	dvec3_new(double x, double y, double z);
 
@@ -124,5 +127,8 @@ t_dvec2	dvec3_xz(t_dvec3 a);
 
 // Form a new ivec2 out of x and z components of ivec3
 t_dvec2	dvec3_yz(t_dvec3 a);
+
+// Performs a linear interpolation between a and b
+t_dvec3	dvec3_lerp(t_dvec3 a, t_dvec3 b, double i);
 
 #endif

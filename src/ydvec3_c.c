@@ -34,3 +34,8 @@ t_dvec3	dvec3_cross(t_dvec3 a, t_dvec3 b)
 		.y = a.z * b.x - a.x * b.z,
 		.z = a.x * b.y - a.y * b.x});
 }
+
+t_dvec3	dvec3_lerp(t_dvec3 a, t_dvec3 b, double i)
+{
+	return (dvec3_add(a, dvec3_scale(dvec3_sub(b, a), i)));
+}

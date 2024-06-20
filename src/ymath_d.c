@@ -21,7 +21,7 @@ int	int_clamp(int v, int min, int max)
 	return (v);
 }
 
-unsigned int	uint_clamp(int v, int min, int max)
+unsigned int	uint_clamp(t_uint v, t_uint min, t_uint max)
 {
 	if (v > max)
 		return (max);
