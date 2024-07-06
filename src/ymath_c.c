@@ -28,7 +28,7 @@ int	int_lerp(int a, int b, double i)
 
 t_uint	uint_lerp(t_uint a, t_uint b, double i)
 {
-	return (t_uint)((int)a + ((int)b - (int)a) * i);
+	return ((t_uint)((int)a + ((int)b - (int)a) * i));
 }
 
 double	double_lerp(double a, double b, double i)
