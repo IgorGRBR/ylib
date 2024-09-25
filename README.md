@@ -1,9 +1,7 @@
 # ylib
 ylib is an alternative to libft.
 
-Libft is a C library that is used in 42 School and developed by its students. ylib aims to be a simple alternative that provides a variety of useful types and functions to simplify the development of 42 School projects. ylib is compatible with 42 School Norm v4*.
-
-*My definition of "compatible" is that the norminette doesn't complain about the code :).
+Libft is a C library that is used in 42 School and developed by its students. ylib aims to be a simple alternative that provides a variety of useful types and functions to simplify the development of 42 School projects. ylib is compatible with 42 School Norm v4.
 
 ## What's new
 ### 1.3
